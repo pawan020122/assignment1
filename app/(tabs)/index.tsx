@@ -1,98 +1,127 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import {StyleSheet, View, ScrollView, Text } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <SafeAreaView style={styles.mainContainer}>
+      <View style={styles.header}>
+        {/* <Text style={{color: '#fff', fontSize: 20, fontWeight: 'bold', marginBottom: 20}}>Hello World</Text> */}
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+        style={styles.image}
+        source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8Fd52OTdb5jFQJ6ee5YU0G03WSgJPZMHAL0cselBQAWIAgPufFljELq4R32-FJKTmz3g&usqp=CAU"}}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+        <View>
+          <Image
+          style={styles.profileImage}
+          source={{uri: "https://www.wikihow.com/images/c/cc/Face-Shapes-Men-Step-12.jpg"}}
+          />
+        </View>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.heading}>
+        <Text style={styles.text}>Followers</Text>
+        <Text style={styles.mainText}>Saved</Text>
+        <Text style={styles.text}>Following</Text>
+      </View>
+
+      <ScrollView>
+      <View style={styles.mainImage}> 
+        <Image
+        style={styles.image1}
+        source={{uri: "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="}}
+        />
+        <Image
+        style={styles.image1}
+        source={{uri: "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg"}}
+        />
+      </View>
+
+      <View>
+        <Image
+        style={styles.image2}
+        source={{uri: "https://st2.depositphotos.com/1718692/7425/i/450/depositphotos_74257459-stock-photo-lake-near-the-mountain-in.jpg"}}
+        />
+      </View>
+
+      <View style={styles.mainImage}>
+        <Image
+        style={styles.image3}
+        source={{uri: "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"}}
+        />
+        <Image
+        style={styles.image3}
+        source={{uri: "https://media.istockphoto.com/id/1216726258/photo/mountain-coverd-with-cloud-layers-and-beautiful-sky.jpg?s=612x612&w=0&k=20&c=H-2YPlqvEUflou0aZbPY3_grwqukN3jLiGrBeHVuSbk="}}
+        />
+        <Image
+        style={styles.image3}
+        source={{uri: "https://i.pinimg.com/236x/9c/b0/70/9cb070d62dc738a0c3a1a408d68e4af5.jpg"}}
+        />
+      </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#efe9e9ff',
+    padding: 15,
+  },
+  image: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginTop: 20,
+  },
+  header: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 8,
+    padding: 10,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  heading: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 30,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  text: {
+    color: '#565555ff',
+    fontSize: 20,
+  },
+  mainText: {
+    color: '#0a0606ff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  image1: {
+    width: '48%',
+    height: 200,
+    borderRadius: 20,
+    marginTop: 30,
+  },
+  mainImage: { 
+    flexDirection: 'row',
+    gap: 10,
+  },
+  image2: {
+    width: '100%',
+    height: 200,
+    borderRadius: 20,
+    marginTop: 30,
+  },
+  image3: {
+    width: '30%',
+    height: 250,
+    borderRadius: 20,
+    marginTop: 30,
+    marginRight: 5,
   },
 });
